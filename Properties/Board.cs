@@ -8,8 +8,8 @@ namespace TicTacToe.Properties
 {
     internal class Board
     {
-        private State[,] board = new State[3, 3]; // Create the matrix that represent the tic tac toe board
-        private int counter = 1; // Counter to identify if is X or O
+        private State[,] board = new State[3, 3]; // Create a multidimensional array, a matrix that represent the tic tac toe board
+        private int counter = 1; // Counter to dertermine if it's X or O, if it's odd then the move is X
 
         public void SetBoard(int row, int column)
         {
@@ -17,22 +17,18 @@ namespace TicTacToe.Properties
             { 
                 board[row, column] = State.O;
                 counter += 1; // adds one to the counter switching moves between X and O
+                Console.WriteLine("It's O turn");
             }
             else {
                 board[row, column] = State.X;
                 counter += 1;
+                Console.WriteLine("It's X turn");
             }
         }
 
-        public State[,] GetBoard()
+        public State[,] GetBoard() // This constructor returns the matrix with all rows and columns
         {
-            State[,] allBoard = new State[3, 3];
-            for (int row = 0; row < board.GetLength(0); row++)
-            {
-                for (int column = 0; column < board.GetLength(1); column++)
-                    allBoard[row, column] = board[row, column];
-            }
-            return allBoard;
+            return board;
         }
     }
 }
